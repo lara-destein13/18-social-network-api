@@ -6,9 +6,9 @@ const thought = require('./models/thought');
 const app = express()
 const port = 3000
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:3000', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/network', {
+useNewUrlParser: true,
+useUnifiedTopology: true
 });
 
 // Use this to log mongo queries being executed!
