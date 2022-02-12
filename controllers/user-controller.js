@@ -51,7 +51,21 @@ const userController = {
     },
     
     userDelete(req, res) {
+        const params = req.params;
         console.log("userDelete");
+        const success = (data) => {
+            console.log("deletesucceded") 
+            res.json(data);   
+        }
+ 
+        const fail = (error) => {
+            console.log("deletefailed")
+            res.status(400).json(error);
+        }
+
+        user.findOneAndDelete({ _id: params.id })
+        .then(success)
+        .catch(fail);
     },
 }
 
