@@ -1,10 +1,19 @@
 // const user = require('../models/user');
 const { json } = require('body-parser');
+const { use } = require('express/lib/application');
 const user = require('../models/user');
 
 const userController = {
     userGetAll(req, res) {
         console.log("userGetAll");
+        const body = req.body;
+        user.find({})
+            .then(data => res.json(data))
+            .catch(error => {
+                console.log(error);
+                res.status(400).json(error);
+            });
+
     },
     
     userGetSingle(req, res) {
@@ -35,7 +44,7 @@ const userController = {
 
         const success = (data) => {
             if (!data) {
-                res.status(404).json({ message: 'No pizza found with this id!' });
+                res.status(404).json({ message: 'No user found with this id!' });
                 return;
             }
             res.json(data);    
