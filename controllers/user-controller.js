@@ -18,6 +18,20 @@ const userController = {
     
     userGetSingle(req, res) {
         console.log("userGetSingle");
+        const params = req.params;
+        const success = (data) => {
+            console.log("success");  
+            res.json(data);    
+        }
+    
+        const fail = (error) => {
+            console.log("fail");  
+            res.status(400).json(error);
+        }
+           
+        user.findOne({_id: params.id })
+            .then(success)
+            .catch(fail);
     },
     
     userPostNew(req, res) {
