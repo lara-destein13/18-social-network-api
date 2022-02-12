@@ -14,20 +14,24 @@ const userController = {
     userPostNew(req, res) {
         console.log("userPostNew");
         const body = req.body;
-        console.log(JSON.stringify(body));
+
+        const success = (data) => {
+            res.json(data);    
+        }
+ 
+        const fail = (error) => {
+            res.status(400).json(error);
+        }
+
         user.create(body)
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.status(400).json(err));    
+            .then(success)
+            .catch(fail);    
     },    
     
     userPutModified(req, res) {
         console.log("userPutModified");
         const params = req.params;
         const body = req.body;
-
-        console.log(JSON.stringify(params));
-        console.log(JSON.stringify(body));
-
 
         const success = (data) => {
             if (!data) {
