@@ -26,7 +26,7 @@ app.get('/', root);
 app.get('/api/users', userController.userGetAll);
 app.get('/api/users/:id', userController.userGetSingle);
 app.post('/api/user', jsonParser, userController.userPostNew);
-app.put('/api/user/:id', userController.userPutModified);
+app.put('/api/user/:id', jsonParser, userController.userPutModified);
 app.delete('/api/user/:id', userController.userDelete);
 
 app.listen(port, () => {
