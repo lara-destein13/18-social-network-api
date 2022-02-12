@@ -30,24 +30,24 @@ const thoughtController = {
     
     thoughtPutModified(req, res) {
         console.log("thoughtPutModified");
-        // const params = req.params;
-        // const body = req.body;
+        const params = req.params;
+        const body = req.body;
 
-        // const success = (data) => {
-        //     if (!data) {
-        //         res.status(404).json({ message: 'No thought found with this id!' });
-        //         return;
-        //     }
-        //     res.json(data);    
-        // }
+        const success = (data) => {
+            if (!data) {
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
+            }
+            res.json(data);    
+        }
  
-        // const fail = (error) => {
-        //     res.status(400).json(error);
-        // }
+        const fail = (error) => {
+            res.status(400).json(error);
+        }
 
-        // thought.findOneAndUpdate({ _id: params.id }, body, { new: true })
-        //     .then(success)
-        //     .catch(fail);
+        thought.findOneAndUpdate({ _id: params.id }, body, { new: true })
+            .then(success)
+            .catch(fail);
     },
     
     thoughtDelete(req, res) {
