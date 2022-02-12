@@ -1,6 +1,7 @@
 const express = require('express');
+var bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const user = require('./models/user');
+const userController = require('./controllers/user-controller');
 const thought = require('./models/thought');
 const app = express()
 const port = 3000
@@ -18,32 +19,15 @@ const root = (req, res) => {
     res.send("root");
 }
 
-const userGetAll = (req, res) => {
-    console.log("userGetAll");
-}
-
-const userGetSingle = (req, res) => {
-    console.log("userGetSingle");
-}
-
-const userPostNew = (req, res) => {
-    console.log("userPostNew");
-}
-
-const userPutModified = (req, res) => {
-    console.log("userPutModified");
-}
-
-const userDelete = (req, res) => {
-    console.log("userDelete");
-}
+// create application/json parser
+var jsonParser = bodyParser.json()
 
 app.get('/', root);
-app.get('/api/users', userGetAll);
-app.get('/api/users/:id', userGetSingle);
-app.post('/api/user', userPostNew);
-app.put('/api/user/:id', userPutModified);
-app.delete('/api/user/:id', userDelete);
+app.get('/api/users', userController.userGetAll);
+app.get('/api/users/:id', userController.userGetSingle);
+app.post('/api/user', jsonParser, userController.userPostNew);
+app.put('/api/user/:id', userController.userPutModified);
+app.delete('/api/user/:id', userController.userDelete);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
