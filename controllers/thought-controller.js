@@ -22,15 +22,24 @@ const thoughtController = {
         console.log("thoughtGetAll");
 
     },
-    
 
-
-
-
-
-
-    thoughtGetSingle(req, res) {
+    thoughtGetSingle(req, res) {     
         console.log("thoughtGetSingle");
+        const params = req.params;
+        const success = (data) => {
+            console.log("success");
+            res.json(data);
+        }
+
+        const fail = (error) => {
+            console.log("fail");  
+            res.status(400).json(error);
+        }
+           
+        thought.findOne({_id: params.id })
+            .then(success)
+            .catch(fail);
+
     },
     
     thoughtPostNew(req, res) {

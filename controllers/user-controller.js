@@ -23,20 +23,6 @@ const userController = {
         console.log("userGetAll");
 
     },
-
-
-    // userGetAll(req, res) {
-    //     console.log("userGetAll");
-    //     const body = req.body;
-    //     user.find({})
-    //         .then(data => res.json(data))
-    //         .catch(error => {
-    //             console.log(error);
-    //             res.status(400).json(error);
-    //         });
-
-    // },
-
     
     userGetSingle(req, res) {
         console.log("userGetSingle");
