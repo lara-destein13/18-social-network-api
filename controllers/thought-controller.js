@@ -4,9 +4,31 @@ const thought = require('../models/thought');
 
 const thoughtController = {
     thoughtGetAll(req, res) {
+
+        const success = (data) => {
+            console.log("success");  
+            res.json(data);    
+        }
+    
+        const fail = (error) => {
+            console.log("fail");  
+            res.status(400).json(error);
+        }
+           
+        thought.find({})
+            .then(success)
+            .catch(fail);
+
         console.log("thoughtGetAll");
+
     },
     
+
+
+
+
+
+
     thoughtGetSingle(req, res) {
         console.log("thoughtGetSingle");
     },

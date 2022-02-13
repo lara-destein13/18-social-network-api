@@ -13,7 +13,12 @@ const userSchema = new Schema({
         unique: true, 
         // must match a valid email address (look into Mongoose's mathcing validation)
     },
-    thoughts: [],
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'thought'
+        }
+    ],
     friends: []
 });
 
