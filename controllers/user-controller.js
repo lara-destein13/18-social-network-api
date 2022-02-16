@@ -1,10 +1,10 @@
-// const user = require('../models/user');
 const { json } = require('body-parser');
 const { use } = require('express/lib/application');
 const user = require('../models/user');
 
 const userController = {
     userGetAll(req, res) {
+        console.log("userGetAll");
 
         const success = (data) => {
             console.log("userGetAll success");  
@@ -32,12 +32,12 @@ const userController = {
         console.log("userGetSingle");
         const params = req.params;
         const success = (data) => {
-            console.log("success");  
+            console.log("userGetSingle success");  
             res.json(data);    
         }
     
         const fail = (error) => {
-            console.log("fail");  
+            console.log(`userGetSingle fail: ${error}`);
             res.status(400).json(error);
         }
            
@@ -57,10 +57,12 @@ const userController = {
         const body = req.body;
 
         const success = (data) => {
+            console.log("userPostNew success");
             res.json(data);    
         }
  
         const fail = (error) => {
+            console.log(`userPostNew fail: ${error}`);
             res.status(400).json(error);
         }
 
@@ -75,6 +77,7 @@ const userController = {
         const body = req.body;
 
         const success = (data) => {
+            console.log(`userPutModified success`);
             if (!data) {
                 res.status(404).json({ message: 'No user found with this id!' });
                 return;
@@ -83,6 +86,7 @@ const userController = {
         }
  
         const fail = (error) => {
+            console.log(`userPutModified: ${error}`);
             res.status(400).json(error);
         }
 
@@ -92,15 +96,16 @@ const userController = {
     },
     
     userDelete(req, res) {
+        console.log("userDelete")
         const params = req.params;
         console.log("userDelete");
         const success = (data) => {
-            console.log("deletesucceded") 
+            console.log("userDelete success") 
             res.json(data);   
         }
  
         const fail = (error) => {
-            console.log("deletefailed")
+            console.log(`userDelete fail: ${error}`);
             res.status(400).json(error);
         }
 

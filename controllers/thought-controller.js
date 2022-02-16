@@ -115,6 +115,20 @@ const thoughtController = {
     
     thoughtDelete(req, res) {
         console.log("thoughtDelete");
+        const params = req.params;
+        const success = (data) => {
+            console.log("thoughtDelete success")
+            res.json(data);            
+        }
+
+        const fail = (error) => {
+            console.log("thoughtDelete fail")
+            res.status(400).json(error);
+        }
+
+        thought.findOneAndDelete({ _id: params.id })
+        .then(success)
+        .catch(fail);
     },
 }
 
