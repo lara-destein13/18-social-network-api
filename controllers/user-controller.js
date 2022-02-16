@@ -7,21 +7,25 @@ const userController = {
     userGetAll(req, res) {
 
         const success = (data) => {
-            console.log("success");  
+            console.log("userGetAll success");  
             res.json(data);    
         }
     
         const fail = (error) => {
-            console.log("fail");  
+            console.log(fail);  
+            console.log(`userGetAll fail: ${error}`);
             res.status(400).json(error);
         }
            
         user.find({})
+            .populate({
+                path: 'thoughts',
+                select: '-__v'
+            })
+            .select('-__v')
+            .sort({ _id: -1 })
             .then(success)
             .catch(fail);
-
-        console.log("userGetAll");
-
     },
     
     userGetSingle(req, res) {
@@ -38,6 +42,12 @@ const userController = {
         }
            
         user.findOne({_id: params.id })
+            .populate({
+                path: 'thoughts',
+                select: '-__v'
+            })
+            .select('-__v')
+            .sort({ _id: -1 })
             .then(success)
             .catch(fail);
     },
