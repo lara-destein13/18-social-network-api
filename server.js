@@ -27,14 +27,10 @@ app.get('/', root);
 app.get('/api/users', userController.userGetAll);
 app.get('/api/users/:id', userController.userGetSingle);
 app.post('/api/user', jsonParser, userController.userPostNew);
-app.put('/api/user/:id', jsonParser,userController.userPutModified);
+app.put('/api/user/:id', jsonParser, userController.userPutModified);
 app.delete('/api/user/:id', userController.userDelete);
 
-app.get('/api/thought', thoughtController.thoughtGetAll);
-app.get('/api/thought/:id', thoughtController.thoughtGetSingle);
-app.post('/api/thought', jsonParser, thoughtController.thoughtPostNew);
-app.put('/api/thought/:id', jsonParser, thoughtController.thoughtPutModified);
-app.delete('/api/thought/:id', thoughtController.thoughtDelete);
+app.post('/api/thoughts/:userId', jsonParser, thoughtController.thoughtPostNew);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
