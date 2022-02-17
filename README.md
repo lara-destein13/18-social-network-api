@@ -30,7 +30,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 Application runs in the command line. Once in the project's root directory, run server.js in the terminal. Make sure you are connected to MongoDb. Insomnia can be used to show API POST, PUT, and DELETE routes working successfully. 
 
-See link to a walkthorugh video: 
+See link to a walkthorugh video: https://drive.google.com/file/d/1eXXtytA_0jIBjobKDlzcotyUuZYGth3w/view
 
 ## Contributing
 Made with &hearts; by Lara DeStein
