@@ -16,10 +16,6 @@ const thoughtController = {
         }
            
         thought.find({})
-            .populate({
-                path: 'thoughts',
-                select: '-__v'
-            })
             .select('-__v')
             .sort({ _id: -1 })
             .then(success)
@@ -43,23 +39,20 @@ const thoughtController = {
         }
            
         thought.findOne({_id: params.id })
-            .populate({
-                path: 'comments',
-                select: '-__v'
-            })
             .select('-__v')
             .then(success)
             .catch(fail);
-
     },
     
     thoughtPostNew(req, res) {
         console.log("thoughtPostNew");
         const params = req.params;
         const body = req.body;
+        console.log(`params: ${JSON.stringify(params)}`);
 
         const success1 = (data) => {
             console.log("thoughtPostNew success1");
+            console.log(`data: ${JSON.stringify(data)}`);
             const _id = data._id;
             return user.findOneAndUpdate(
                 { _id: params.userId },
