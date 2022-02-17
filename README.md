@@ -32,5 +32,7 @@ Application runs in the command line. Once in the project's root directory, run 
 
 See link to a walkthorugh video: https://drive.google.com/file/d/1eXXtytA_0jIBjobKDlzcotyUuZYGth3w/view
 
+![Screen Shot 2022-02-17 at 5 59 03 PM](https://user-images.githubusercontent.com/88476888/154585715-8affa184-32c8-4543-b557-11f11d7b7656.png)
+
 ## Contributing
 Made with &hearts; by Lara DeStein
